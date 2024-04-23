@@ -1,0 +1,6 @@
+name = "Ollama"
+language = "rust"
+type = "provider"
+
+[provider]
+vendor = "thomastaylor312"
