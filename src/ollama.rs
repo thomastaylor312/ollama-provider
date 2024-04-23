@@ -118,10 +118,10 @@ impl OllamaProvider {
         let (host, port) = if let Some(raw) = host_data.config.get(URL_KEY) {
             get_host_and_port(raw).unwrap_or_else(|e| {
                 error!(err = %e, "Invalid host in config");
-                ("localhost".to_string(), 11434)
+                ("http://localhost".to_string(), 11434)
             })
         } else {
-            ("localhost".to_string(), 11434)
+            ("http://localhost".to_string(), 11434)
         };
         let default_config = OllamaConfig {
             model: host_data

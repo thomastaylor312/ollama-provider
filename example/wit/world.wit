@@ -1,0 +1,6 @@
+package wasmcloud:hello;
+
+world hello {
+  import thomastaylor312:ollama/generate;
+  export wasi:http/incoming-handler@0.2.0;
+}
