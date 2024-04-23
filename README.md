@@ -1,16 +1,16 @@
-# NATS Capability Provider
+# Ollama Capability Provider
 
-This capability provider is an implementation of the `wasmcloud:messaging` contract. It exposes publish, request, and subscribe functionality to components.
+This capability provider is an implementation of the `thomastaylor312:ollama` interface. It exposes the Ollama API to components.
 
 ## Link Configuration
 
 To configure this provider, use the following configuration values as `target_config` in the link:
 
-| Property        | Description                                                                                                                                                                      |
-| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `subscriptions` | A comma-separated list of subscription topics. For example, the setting `subscription=wasmcloud.example,test.topic` subscribes to the topic `wasmcloud.example` and `test.topic` |
-| `uri`           | NATS connection URI. If not specified, the default is `0.0.0.0:4222`                                                                                                             |
+| Property     | Description                                                                          |
+| :----------- | :----------------------------------------------------------------------------------- |
+| `model_name` | The name of the model to use for requests                                            |
+| `url`        | The URL of the Ollama API. If not specified, the default is `http://localhost:11434` |
 
-## Full Implementation
+## Caveats
 
-This provider is fully implemented as [provider-messaging-nats](https://github.com/wasmCloud/wasmCloud/tree/main/crates/provider-messaging-nats) in the wasmCloud repository. You can find the full implementations for the functions marked as `TODO:` in that crate, as well as extensions that add NATS authentication, TLS CA support, etc.
+Currently wasmCloud doesn't support resources in custom interfaces. The support for doing this just landed in upstream wasmtime and should be added soon, which will make this interface better. For now, it is highly recommended to `ollama pull` your desired models and then set your RPC timeouts high on your hosts (30-60s)
